@@ -30,9 +30,13 @@ def model(node, t):
     # returns the wait time at a station given the time (in our case, random)
     return random.randint(0, 30)
 
-for t in times:
-    for node in nodes:
-        G.nodes[node][t] = model(node, t)
+# we make sure that FIFO is respected
+for node in nodes:
+    for t in times:
+        if t == 0:
+            G.nodes[node][t] = model(node, t)
+        else:
+            G.nodes[node][t] = max(model(node, t), G.nodes[node][t-1]-1)
 
 # for each skilift, compute the arrival time at the destination node based on the starting time (by adding up time, skilift length and wait time at the station)
 for edge in skilifts:
