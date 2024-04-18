@@ -48,4 +48,4 @@ for edge in slopes:
         G.edges[edge[:2]]['arrival'] = [G.nodes[edge[0]][t] + G.edges[edge[:2]]['weight'] + t for t in times]
     else:
         update = [min(G.nodes[edge[0]][t] + G.edges[edge[:2]]['weight'] + t, G.edges[edge[:2]]['weight'][t]) for t in times]
-        G.edges[edge[:2]]['weight'] = update
+        G.edges[edge[:2]]['arrival'] = update
