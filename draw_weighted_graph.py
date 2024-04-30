@@ -7,6 +7,7 @@ l= input()
 
 #add single edges with recpective weight (you can do it also by defining first a list and then creating a graph on that edge_list)
 G.add_edge("a", "b", weight=l)
+G.add_edge("b", "a", weight=2)
 G.add_edge("a", "c", weight=0.2)
 G.add_edge("c", "d", weight=0.1)
 G.add_edge("c", "e", weight=0.7)
