@@ -67,4 +67,6 @@ def shortest_path(source, time, G):
 
   return prev
 
+
+# Example usage
 print(shortest_path("B", 100, G))
