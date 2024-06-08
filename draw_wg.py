@@ -1,33 +1,5 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-import math as m 
-import itertools as it
-from itertools import compress
-
-def draw(G):
-    #create an edge list, an array with the edges that wil be used in the drawing as an argument
-    edge_list = [(u, v) for (u, v) in G.edges()] 
-
-    #create a dictionary with edge weights associated to the respective edge (the key)
-    edge_labels = nx.get_edge_attributes(G, "weight")
-
-    #define a position for all nodes, required arugment in draw_ntwrkx_nodes
-    pos = nx.planar_layout(G)
-
-    #draw the nodes
-    nx.draw_networkx_nodes(G, pos) 
-
-    #add nodes' label to the graph
-    nx.draw_networkx_labels(G, pos)
-
-    #draw the edges
-    nx.draw_networkx_edges(G, pos, edge_list) 
-
-    #draw the labels
-    nx.draw_networkx_edge_labels(G, pos, edge_labels)
-
-    #display the result
-    plt.show()
 
 def draw_labeled_multigraph(G, attr_name, ax=None, curvedlist=None):
     # slightly modified version of: https://github.com/networkx/networkx/blob/04f99630605414199dc3efb9ab7b00ce619b0a08/examples/drawing/plot_multigraphs.py#L24
