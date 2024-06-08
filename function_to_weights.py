@@ -4,6 +4,19 @@ import networkx as nx
 
 # open the csv file with the ski station data
 def import_station(filename):
+    """
+    Imports ski station data from a CSV file.
+
+    Args:
+        filename (str): The path to the CSV file.
+
+    Returns:
+        tuple: A tuple containing the following elements:
+            - nodes (list): A list of unique node names.
+            - edges (list): A list of edges, where each edge is represented as a tuple.
+            - skilifts (list): A list of skilifts, where each skilift is represented as a tuple.
+            - slopes (list): A list of slopes, where each slope is represented as a tuple.
+    """
     data = None
     skilifts = []
     slopes = []
@@ -21,8 +34,21 @@ def import_station(filename):
 
 
 
+
 def create_graph(filename, model):
-    nodes, edges, skilifts, slopes = import_station('ski_station.csv')
+    """
+    Create a directed graph representing a ski station.
+
+    Parameters:
+    - filename (str): The path to the file containing the ski station data.
+    - model (function): A function that calculates the wait time at a node based on the node and time.
+
+    Returns:
+    - G (networkx.DiGraph): The directed graph representing the ski station.
+
+    """
+    nodes, edges, skilifts, slopes = import_station(filename)
+
     # initialize the directed graph of the ski station
     G = nx.DiGraph()
     G.add_nodes_from(nodes)
@@ -55,12 +81,4 @@ def create_graph(filename, model):
             G.edges[edge[:2]]['arrival'] = update
 
     return G
-
-
-
-
-
-
-
-
 
